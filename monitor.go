@@ -71,7 +71,9 @@ lup:
 			}
 			consecutiveErrors = 0
 
-			if len(data) < monitor.Alarm.Count {
+			ac := int(monitor.Alarm.Count)
+			cc := int(monitor.Alarm.ClearCount)
+			if len(data) < ac {
 				continue
 			}
 
@@ -92,13 +94,13 @@ lup:
 					}
 				}
 
-				if trend == monitor.Alarm.ClearCount {
+				if trend == cc {
 					// is STATE_CLEAR
 					for _, cb := range monitor.ClearActions {
 						go cb(ctx, monitor)
 					}
 					continue lup
-				} else if trend == -1*monitor.Alarm.Count {
+				} else if trend == -1 * ac {
 					// is STATE_ALARM
 					for _, cb := range monitor.AlarmActions {
 						go cb(ctx, monitor)

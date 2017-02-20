@@ -72,8 +72,8 @@ type Metric struct {
 
 type Condition struct {
 	Threshold    float64
-	Count        int
-	ClearCount   int
+	Count        uint
+	ClearCount   uint
 	ComparatorID int
 }
 type Comparator func(p float64, threshold float64) bool

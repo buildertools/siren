@@ -107,8 +107,8 @@ func scale(ctx context.Context, m siren.Monitor, s int) {
 const ctxKey = `docker-scale`
 type DockerScaleConfig struct {
 	ServiceID     string
-	Floor         int
-	Ceiling       int
+	Floor         uint
+	Ceiling       uint
 	Step          int
 	ScaleOnFlap   bool
 	Timeout       time.Duration
