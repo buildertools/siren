@@ -49,7 +49,6 @@ func scale(ctx context.Context, m siren.Monitor, s int) {
 	// Push desired state
 	_, err := clients.RetryLinear(
 			func() (interface{}, clients.ClientError) {
-				fmt.Println("Running service calls")
 				// Connect to Docker endpoint
 				dc, err := docker.NewEnvClient()
 				if err != nil {
